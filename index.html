@@ -132,13 +132,16 @@ span.psw {
      width: 100%;
   }
 }
+
+optgroup { font-size:40px; }
+
 </style>
 </head>
 <body>
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="main.html" onsubmit="myFunction(event)">
+  <form name="myform" class="modal-content animate" onsubmit="myFunction(event)">
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
@@ -149,6 +152,11 @@ span.psw {
         
       <button type="submit">Login</button>
       <label id="msg"><b>Wrong Username/Password</b></label>
+
+      <input type="radio" name="operation" value="1" checked><label style="font-size: 24px;">Access</label>
+      <input type="radio" name="operation" value="2"><label style="font-size: 24px;">Room Guide</label>
+      <input type="radio" name="operation" value="3" disabled><label style="font-size: 24px;">Shared Playroom</label>
+      <input type="radio" name="operation" value="4" disabled><label style="font-size: 24px;">Shared Roof Terrace</label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -175,7 +183,18 @@ function myFunction(e) {
     // alert(document.getElementById('psw').value);
 
   if (document.getElementById('uname').value === 'wri' && document.getElementById('psw').value == 'whiteriver') {
+    if (document.myform.operation[0].checked == true) {
+      document.myform.action ="01_guide_access_en_2024/index.html";
+    } else if (document.myform.operation[1].checked == true) {
+      document.myform.action ="01_guide_amenities_en_2024/index.html";
+    } else if (document.myform.operation[2].checked == true) {
+      document.myform.action ="01_guide_playroom_en_2024/index.html";
+    } else if (document.myform.operation[3].checked == true) {
+      document.myform.action ="01_guide_roof_en_2024/index.html";
+    }
+
     return true;
+
   } else {
     msg.style.display = "block";
     e.preventDefault();
