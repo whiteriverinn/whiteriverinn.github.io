@@ -152,11 +152,11 @@ optgroup { font-size:40px; }
         
       <button type="submit">Login</button>
       <label id="msg"><b>Wrong Username/Password</b></label>
-
       <input type="radio" name="operation" value="1" checked><label style="font-size: 24px;">Access</label>
       <input type="radio" name="operation" value="2"><label style="font-size: 24px;">Room Guide</label>
-      <input type="radio" name="operation" value="3" disabled><label style="font-size: 24px;">Shared Playroom</label>
-      <input type="radio" name="operation" value="4" disabled><label style="font-size: 24px;">Shared Roof Terrace</label>
+<!--       <input type="radio" name="operation" value="3" disabled><label style="font-size: 24px;">Playroom</label>
+      <input type="radio" name="operation" value="4" disabled><label style="font-size: 24px;">Roof Terrace</label> -->
+      <input type="radio" name="operation" value="5" checked><label style="font-size: 24px;">Download PDF</label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -187,10 +187,12 @@ function myFunction(e) {
       document.myform.action ="01_guide_access_en_2024/index.html";
     } else if (document.myform.operation[1].checked == true) {
       document.myform.action ="01_guide_amenities_en_2024/index.html";
+    // } else if (document.myform.operation[2].checked == true) {
+    //   document.myform.action ="01_guide_playroom_en_2024/index.html";
+    // } else if (document.myform.operation[3].checked == true) {
+    //   document.myform.action ="01_guide_roof_en_2024/index.html";
     } else if (document.myform.operation[2].checked == true) {
-      document.myform.action ="01_guide_playroom_en_2024/index.html";
-    } else if (document.myform.operation[3].checked == true) {
-      document.myform.action ="01_guide_roof_en_2024/index.html";
+      document.myform.action ="01_guide_en_2024.pdf";
     }
 
     return true;
