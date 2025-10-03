@@ -677,161 +677,82 @@
                 font-size: 1.8rem;
             }
         }
-        
-        /* Login Modal Styles */
-        .login-modal {
+
+        /* Authentication Modal */
+        .auth-modal {
             display: none;
             position: fixed;
-            z-index: 9999;
+            z-index: 10000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-            pointer-events: none;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
-        .login-modal.active {
-            display: block;
-            pointer-events: all;
+        .auth-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .login-content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 1rem;
-            animation: animatezoom 0.6s;
-        }
-
-        @keyframes animatezoom {
-            from {transform: scale(0)} 
-            to {transform: scale(1)}
-        }
-
-        .login-container {
+        .auth-content {
+            background: white;
             padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 400px;
+            animation: slideIn 0.3s ease-out;
         }
 
-        .login-container label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .auth-content h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
             color: var(--primary);
         }
 
-        .login-container input[type=text], 
-        .login-container input[type=password] {
+        .auth-form input {
             width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
             border: 1px solid var(--gray-300);
             border-radius: 0.5rem;
-            box-sizing: border-box;
             font-size: 1rem;
         }
 
-        .login-container button {
-            background-color: var(--secondary);
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
+        .auth-form button {
             width: 100%;
+            padding: 0.75rem;
+            margin: 1rem 0 0.5rem 0;
+            background: var(--secondary);
+            color: white;
+            border: none;
             border-radius: 0.5rem;
             font-size: 1rem;
-            font-weight: 600;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .login-container button:hover {
-            background-color: var(--accent);
+        .auth-form button:hover {
+            background: var(--accent);
         }
 
-        .login-options {
-            margin: 1rem 0;
-        }
-
-        .login-options label {
-            font-weight: 400;
-            margin-left: 0.5rem;
-            font-size: 1rem;
-            display: inline;
-        }
-
-        .login-options input[type=radio] {
-            margin-right: 0.5rem;
-            width: auto;
-        }
-
-        .login-option {
-            margin: 0.8rem 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .error-message {
-            color: #ff6b6b;
+        .auth-error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
             display: none;
-            margin: 1rem 0;
-            font-weight: 600;
-        }
-
-        .cancel-btn {
-            background-color: #f44336 !important;
-            margin-top: 1rem;
-        }
-
-        .cancel-btn:hover {
-            background-color: #d32f2f !important;
         }
     </style>
 </head>
 <body>
-    <!-- Login Modal -->
-    <div id="loginModal" class="login-modal">
-        <form name="loginForm" class="login-content" onsubmit="handleLogin(event)">
-            <div class="login-container">
-                <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">🏨 White River Inn</h2>
-                
-                <label for="username"><b>Username</b></label>
-                <input id="username" type="text" placeholder="Enter Username" name="username" required>
-
-                <label for="password"><b>Password</b></label>
-                <input id="password" type="password" placeholder="Enter Password" name="password" required>
-                
-                <div class="error-message" id="errorMessage">
-                    <b>Wrong Username/Password</b>
-                </div>
-                
-                <div class="login-options">
-                    <h4 style="margin-bottom: 1rem; color: var(--primary);">Select Guide:</h4>
-                    <div class="login-option">
-                        <input type="radio" name="operation" value="access" id="access" checked>
-                        <label for="access">Access Guide</label>
-                    </div>
-                    <div class="login-option">
-                        <input type="radio" name="operation" value="amenities" id="amenities">
-                        <label for="amenities">Amenities Guide</label>
-                    </div>
-                    <div class="login-option">
-                        <input type="radio" name="operation" value="pdf" id="pdf">
-                        <label for="pdf">Download PDF Guide</label>
-                    </div>
-                </div>
-                
-                <button type="submit">Login</button>
-                <button type="button" onclick="cancelLogin()" class="cancel-btn">Cancel</button>
-            </div>
-        </form>
-    </div>
-
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -1414,83 +1335,44 @@ Total time: ~75 minutes`
             observer.observe(el);
         });
 
-        // Login System
-        window.addEventListener('load', function() {
-            console.log('Window loaded, showing login modal');
-            const loginModal = document.getElementById('loginModal');
-            if (loginModal) {
-                loginModal.classList.add('active');
-            } else {
-                console.error('Login modal not found');
-            }
+        // Authentication System
+        const authModal = document.createElement('div');
+        authModal.id = 'authModal';
+        authModal.className = 'auth-modal';
+        authModal.innerHTML = `
+            <div class="auth-content">
+                <h2>🏨 White River Inn</h2>
+                <p style="text-align: center; color: var(--gray-600); margin-bottom: 1.5rem;">Guest Access Portal</p>
+                <form class="auth-form" onsubmit="return handleAuth(event)">
+                    <input type="text" id="authUser" placeholder="Username" required>
+                    <input type="password" id="authPass" placeholder="Password" required>
+                    <div class="auth-error" id="authError">Invalid username or password</div>
+                    <button type="submit">Access Guide</button>
+                </form>
+            </div>
+        `;
+        document.body.appendChild(authModal);
+
+        // Show auth modal on page load
+        window.addEventListener('load', () => {
+            authModal.classList.add('show');
         });
 
-        function handleLogin(event) {
+        // Authentication handler
+        function handleAuth(event) {
             event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const selectedOperation = document.querySelector('input[name="operation"]:checked').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            console.log('Login attempt:', username, selectedOperation);
-            
-            // Check credentials
-            if (username === 'wri' && password === 'whiteriver') {
-                console.log('Login successful, hiding modal');
-                
-                // Hide login modal completely
-                const loginModal = document.getElementById('loginModal');
-                loginModal.classList.remove('active');
-                loginModal.style.display = 'none';
-                
-                // Handle different options
-                switch(selectedOperation) {
-                    case 'access':
-                        // Scroll to access section
-                        setTimeout(() => {
-                            console.log('Scrolling to access section');
-                            scrollToSection('access');
-                        }, 300);
-                        break;
-                    case 'amenities':
-                        // Scroll to amenities section
-                        setTimeout(() => {
-                            console.log('Scrolling to amenities section');
-                            scrollToSection('amenities');
-                        }, 300);
-                        break;
-                    case 'pdf':
-                        // Trigger PDF download (you'll need to add the PDF file)
-                        console.log('Opening PDF');
-                        window.open('01_guide_en_2024.pdf', '_blank');
-                        break;
-                }
-                
-                return true;
+            const user = document.getElementById('authUser').value;
+            const pass = document.getElementById('authPass').value;
+            const error = document.getElementById('authError');
+
+            if (user === 'wri' && pass === 'whiteriver') {
+                authModal.classList.remove('show');
+                return false;
             } else {
-                // Show error message
-                console.log('Login failed');
-                errorMessage.style.display = 'block';
+                error.style.display = 'block';
                 return false;
             }
         }
-
-        function cancelLogin() {
-            // Hide the modal but don't provide access
-            document.getElementById('loginModal').classList.remove('active');
-            
-            // Optionally redirect to a public page or show a message
-            alert('Access to guest guide requires login credentials.');
-            
-            // Show modal again after a short delay
-            setTimeout(() => {
-                document.getElementById('loginModal').classList.add('active');
-            }, 2000);
-        }
-
-        // Navigation debugging
-        console.log('Script loaded, navigation setup should be working');
     </script>
 </body>
 </html>
