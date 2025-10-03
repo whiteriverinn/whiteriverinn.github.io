@@ -750,6 +750,37 @@
             margin: 0.5rem 0;
             display: none;
         }
+
+        /* Thumbnail System */
+        .thumbnail-image {
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 0.5rem;
+        }
+
+        .thumbnail-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Loading indicator for modal */
+        .modal-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        .modal-content img {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content img.loading {
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -838,7 +869,7 @@
                 </ul>
             </div>
             <div class="info-image">
-                <img src="contents/page_007/page_007.png" alt="Location Map" onclick="openModal(this)">
+                <img src="contents/page_007/page_007_img_002.png" alt="Location Map" data-full-size="contents/page_007/page_007.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
             </div>
         </div>
     </section>
@@ -881,7 +912,7 @@
             <!-- Detailed Route Maps -->
             <div class="info-grid" style="margin-top: 3rem;">
                 <div class="info-image">
-                    <img src="contents/page_002/page_002.png" alt="Haneda Route" onclick="openModal(this)">
+                    <img src="contents/page_002/page_002_img_002.png" alt="Haneda Route" data-full-size="contents/page_002/page_002.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
                     <h3>From Haneda Airport</h3>
@@ -897,14 +928,14 @@
                     <a href="#" class="btn btn-primary" onclick="showDetailedRoute('narita')">View Step-by-Step</a>
                 </div>
                 <div class="info-image">
-                    <img src="contents/page_003/page_003.png" alt="Narita Route" onclick="openModal(this)">
+                    <img src="contents/page_003/page_003_img_002.png" alt="Narita Route" data-full-size="contents/page_003/page_003.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
 
             <!-- Airport Bus Section -->
             <div class="info-grid" style="margin-top: 3rem;" id="bus-section">
                 <div class="info-image">
-                    <img src="contents/page_004/page_004.png" alt="T-CAT Bus Terminal" onclick="openModal(this)">
+                    <img src="contents/page_004/page_004_img_002.png" alt="T-CAT Bus Terminal" data-full-size="contents/page_004/page_004.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
                     <h3>Airport Bus via T-CAT</h3>
@@ -943,14 +974,14 @@
                     </div>
                 </div>
                 <div class="info-image">
-                    <img src="contents/page_007/page_007.png" alt="Hotel Location Map" onclick="openModal(this)">
+                    <img src="contents/page_007/page_007_img_003.png" alt="Hotel Location Map" data-full-size="contents/page_007/page_007.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
 
             <!-- Local Area Guide Section -->
             <div class="info-grid" style="margin-top: 3rem;" id="local-section">
                 <div class="info-image">
-                    <img src="contents/page_007/page_007.png" alt="Area Overview Map" onclick="openModal(this)">
+                    <img src="contents/page_007/page_007_img_004.png" alt="Area Overview Map" data-full-size="contents/page_007/page_007.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
                     <h3>🚶 Near the Building Guide</h3>
@@ -977,13 +1008,13 @@
                     </ol>
                 </div>
                 <div class="info-image">
-                    <img src="contents/page_008/page_008.png" alt="Walking Route Map" onclick="openModal(this)">
+                    <img src="contents/page_008/page_008_img_002.png" alt="Walking Route Map" data-full-size="contents/page_008/page_008.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
 
             <div class="info-grid" style="margin-top: 2rem;">
                 <div class="info-image">
-                    <img src="contents/page_009/page_009.png" alt="Building Entrance" onclick="openModal(this)">
+                    <img src="contents/page_009/page_009_img_003.png" alt="Building Entrance" data-full-size="contents/page_009/page_009.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
                     <h3>🏢 Building Entrance & Floors</h3>
@@ -1007,7 +1038,7 @@
     <section class="info-section">
         <div class="info-grid">
             <div class="info-image">
-                <img src="contents/page_011/page_011.png" alt="Smart Lock" onclick="openModal(this)">
+                <img src="contents/page_011/page_011_img_002.png" alt="Smart Lock" data-full-size="contents/page_011/page_011.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
             </div>
             <div class="info-content">
                 <h2>Easy Entry System</h2>
@@ -1031,28 +1062,28 @@
             </div>
             <div class="amenities-showcase">
                 <div class="amenity-item">
-                    <img src="contents/page_013/page_013.png" alt="WiFi" onclick="openModal(this)">
+                    <img src="contents/page_013/page_013.png" alt="WiFi" data-full-size="contents/page_013/page_013.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                     <div class="amenity-overlay">
                         <h3>High-Speed WiFi</h3>
                         <p>Free internet on all floors</p>
                     </div>
                 </div>
                 <div class="amenity-item">
-                    <img src="contents/page_012/page_012.png" alt="Air Conditioning" onclick="openModal(this)">
+                    <img src="contents/page_012/page_012_img_002.png" alt="Air Conditioning" data-full-size="contents/page_012/page_012.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                     <div class="amenity-overlay">
                         <h3>Climate Control</h3>
                         <p>Individual AC units</p>
                     </div>
                 </div>
                 <div class="amenity-item">
-                    <img src="contents/page_018/page_018.png" alt="Laundry" onclick="openModal(this)">
+                    <img src="contents/page_018/page_018_img_002.png" alt="Laundry" data-full-size="contents/page_018/page_018.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                     <div class="amenity-overlay">
                         <h3>Coin Laundry</h3>
                         <p>24/7 laundry facilities</p>
                     </div>
                 </div>
                 <div class="amenity-item">
-                    <img src="contents/page_009/page_009.png" alt="Building" onclick="openModal(this)">
+                    <img src="contents/page_009/page_009_img_003.png" alt="Building" data-full-size="contents/page_009/page_009.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                     <div class="amenity-overlay">
                         <h3>Private Entrance</h3>
                         <p>Secure building access</p>
@@ -1075,7 +1106,7 @@
                 </div>
             </div>
             <div class="info-image">
-                <img src="contents/page_013/page_013.png" alt="WiFi Info" onclick="openModal(this)">
+                <img src="contents/page_013/page_013.png" alt="WiFi Info" data-full-size="contents/page_013/page_013.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
             </div>
         </div>
     </section>
@@ -1223,8 +1254,39 @@
         function openModal(img) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
+            const modalContent = modal.querySelector('.modal-content');
+            
             modal.classList.add('active');
-            modalImg.src = img.src;
+            
+            // Use full-size image if available, otherwise use current src
+            const fullSizeUrl = img.dataset.fullSize || img.src;
+            
+            if (fullSizeUrl !== img.src) {
+                // Show loading state
+                modalImg.classList.add('loading');
+                modalImg.src = img.src; // Show thumbnail first
+                
+                // Create loading indicator
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'modal-loading';
+                loadingDiv.textContent = 'Loading full size...';
+                modalContent.appendChild(loadingDiv);
+                
+                // Load full-size image
+                const fullImg = new Image();
+                fullImg.onload = () => {
+                    modalImg.src = fullSizeUrl;
+                    modalImg.classList.remove('loading');
+                    loadingDiv.remove();
+                };
+                fullImg.onerror = () => {
+                    loadingDiv.textContent = 'Failed to load full size image';
+                    setTimeout(() => loadingDiv.remove(), 2000);
+                };
+                fullImg.src = fullSizeUrl;
+            } else {
+                modalImg.src = fullSizeUrl;
+            }
         }
 
         function closeModal() {
@@ -1333,6 +1395,35 @@ Total time: ~75 minutes`
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
+        });
+
+        // Thumbnail preloading system
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const fullSizeUrl = img.dataset.fullSize;
+                    
+                    if (fullSizeUrl && !img.dataset.preloaded) {
+                        // Preload the full-size image in the background
+                        const preloadImg = new Image();
+                        preloadImg.src = fullSizeUrl;
+                        img.dataset.preloaded = 'true';
+                        
+                        // Add a visual indicator that the image is preloaded
+                        preloadImg.onload = () => {
+                            img.style.border = '2px solid rgba(201, 169, 97, 0.3)';
+                        };
+                    }
+                    
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px' });
+
+        // Observe all thumbnail images for preloading
+        document.querySelectorAll('.thumbnail-image').forEach(img => {
+            imageObserver.observe(img);
         });
 
         // Authentication System
