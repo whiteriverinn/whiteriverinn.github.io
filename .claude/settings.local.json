@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:wri.cloudnative.site)",
-      "WebFetch(domain:themewagon.github.io)"
+      "WebFetch(domain:themewagon.github.io)",
+      "Bash(git stash:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git cherry-pick:*)"
     ],
     "deny": [],
     "ask": []
