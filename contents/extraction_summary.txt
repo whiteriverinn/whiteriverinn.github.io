@@ -1,0 +1,162 @@
+================================================================================
+PDF EXTRACTION SUMMARY
+================================================================================
+
+Date and Time: 2025-10-03 20:07:23
+Source PDF: /Users/leixu/Documents/work_now/genai/python-pdf-extractor/tmp/01_guide_en_2024.pdf
+Output Directory: /Users/leixu/Documents/work_now/genai/python-pdf-extractor/pdf_extracted_output
+Total Pages: 18
+
+--------------------------------------------------------------------------------
+PDF METADATA
+--------------------------------------------------------------------------------
+  format: PDF 1.4
+  title: 01_guide_en_2024
+  creator: Keynote
+  producer: macOS Version 12.6.8 (Build 21G725) Quartz PDFContext
+  creationDate: D:20240219002408Z00'00'
+  modDate: D:20240219002408Z00'00'
+
+--------------------------------------------------------------------------------
+EXTRACTION SETTINGS
+--------------------------------------------------------------------------------
+  Page Image Format: PNG
+  Page Image DPI: 300
+
+--------------------------------------------------------------------------------
+FOLDER STRUCTURE
+--------------------------------------------------------------------------------
+pdf_extracted_output/
+├── extraction_summary.txt  (This file)
+├── pdf_metadata.txt        (PDF document metadata)
+├── page_001/               (Folder for page 1)
+│   ├── page_001.png        (Image of page 1)
+│   ├── page_001_text.txt   (Text extracted from page 1)
+│   └── page_001_img_NNN.ext  (Embedded images from page 1, if any)
+├── page_002/               (Folder for page 2)
+│   └── ... (similar structure as page_001)
+└── ... (one folder per page)
+
+--------------------------------------------------------------------------------
+EXTRACTION DETAILS BY PAGE
+--------------------------------------------------------------------------------
+
+Page 1 of 18:
+  └── Folder: pdf_extracted_output/page_001
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 1 embedded image(s) extracted
+
+Page 2 of 18:
+  └── Folder: pdf_extracted_output/page_002
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 3 of 18:
+  └── Folder: pdf_extracted_output/page_003
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 4 of 18:
+  └── Folder: pdf_extracted_output/page_004
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 5 of 18:
+  └── Folder: pdf_extracted_output/page_005
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 6 of 18:
+  └── Folder: pdf_extracted_output/page_006
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 1 embedded image(s) extracted
+
+Page 7 of 18:
+  └── Folder: pdf_extracted_output/page_007
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 11 embedded image(s) extracted
+
+Page 8 of 18:
+  └── Folder: pdf_extracted_output/page_008
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 4 embedded image(s) extracted
+
+Page 9 of 18:
+  └── Folder: pdf_extracted_output/page_009
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 10 of 18:
+  └── Folder: pdf_extracted_output/page_010
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 11 of 18:
+  └── Folder: pdf_extracted_output/page_011
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 2 embedded image(s) extracted
+
+Page 12 of 18:
+  └── Folder: pdf_extracted_output/page_012
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 2 embedded image(s) extracted
+
+Page 13 of 18:
+  └── Folder: pdf_extracted_output/page_013
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 1 embedded image(s) extracted
+
+Page 14 of 18:
+  └── Folder: pdf_extracted_output/page_014
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 1 embedded image(s) extracted
+
+Page 15 of 18:
+  └── Folder: pdf_extracted_output/page_015
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 5 embedded image(s) extracted
+
+Page 16 of 18:
+  └── Folder: pdf_extracted_output/page_016
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 6 embedded image(s) extracted
+
+Page 17 of 18:
+  └── Folder: pdf_extracted_output/page_017
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+Page 18 of 18:
+  └── Folder: pdf_extracted_output/page_018
+      ├── 1 PNG file (page as image)
+      ├── 1 TXT file (extracted text) - Contains text
+      └── 3 embedded image(s) extracted
+
+--------------------------------------------------------------------------------
+EXTRACTION STATISTICS
+--------------------------------------------------------------------------------
+Total pages processed: 18
+Pages with text content: 18 of 18 (100.0%)
+Pages with embedded images: 18 of 18 (100.0%)
+Total embedded images extracted: 58
+
+================================================================================
+Extraction completed successfully at 2025-10-03 20:08:20
+================================================================================

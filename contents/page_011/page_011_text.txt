@@ -1,0 +1,12 @@
+The Smart Lock
+Use the passcode retrieved after 
+Check-in to unlock the door.
+Please manually lock the door after 
+entering/leaving.
+To unlock:
+1. Tap *
+2. Type passcode
+3. Tap #
+To lock
+1. Press #
+11

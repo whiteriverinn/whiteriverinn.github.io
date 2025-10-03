@@ -1,0 +1,9 @@
+PDF Metadata:
+==================================================
+
+format: PDF 1.4
+title: 01_guide_en_2024
+creator: Keynote
+producer: macOS Version 12.6.8 (Build 21G725) Quartz PDFContext
+creationDate: D:20240219002408Z00'00'
+modDate: D:20240219002408Z00'00'

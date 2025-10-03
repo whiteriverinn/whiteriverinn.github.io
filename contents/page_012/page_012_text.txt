@@ -1,0 +1,8 @@
+AC Remote Controller
+Dry
+Power Off
+Timer On/Off
+Warm
+Cool
+Temp Up/Down
+12

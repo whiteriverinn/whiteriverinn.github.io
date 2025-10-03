@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wri.cloudnative.site)",
+      "WebFetch(domain:themewagon.github.io)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

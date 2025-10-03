@@ -1,210 +1,1249 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White River Inn - Your Home in Tokyo</title>
+    <meta name="description" content="Experience authentic Japanese hospitality at White River Inn, conveniently located in Tokyo's Koto district">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c9a961;
+            --accent: #8b7355;
+            --light: #f8f5f0;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f4f4f5;
+            --gray-200: #e4e4e7;
+            --gray-300: #d4d4d8;
+            --gray-400: #a1a1aa;
+            --gray-500: #71717a;
+            --gray-600: #52525b;
+            --gray-700: #3f3f46;
+            --gray-800: #27272a;
+            --gray-900: #18181b;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-button:hover {
-  opacity: 0.8;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+        }
 
-.container {
-  padding: 16px;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-#msg {
-  display: none; /* Hidden by default */
-  z-index: 1; /* Sit on top */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  color: rgb(255,0,0); /* Fallback color */
-}
+        .logo span {
+            font-family: 'Playfair Display', serif;
+        }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('contents/images/exterior.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom center no-repeat;
+            background-size: cover;
+        }
 
-optgroup { font-size:40px; }
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
 
-</style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Quick Access Section */
+        .quick-access {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--gray-100) 100%);
+        }
+
+        .feature-content {
+            padding: 2rem;
+        }
+
+        .feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Info Sections */
+        .info-section {
+            padding: 5rem 2rem;
+            background: var(--gray-50);
+        }
+
+        .info-section:nth-child(even) {
+            background: var(--white);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .info-content p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Access Guide Section */
+        .access-guide {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .transport-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 1rem;
+            transition: var(--transition);
+        }
+
+        .transport-card:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .transport-card:hover .transport-icon {
+            transform: scale(1.1);
+        }
+
+        .transport-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .transport-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .transport-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Amenities Section */
+        .amenities-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .amenity-item {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            background: var(--gray-200);
+        }
+
+        .amenity-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .amenity-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .amenity-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1rem 1rem;
+            color: white;
+        }
+
+        .amenity-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Policies Section */
+        .policies {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .policy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .policy-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .policy-card.warning {
+            border-left-color: #ff6b6b;
+        }
+
+        .policy-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .policy-icon {
+            font-size: 1.5rem;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            color: var(--gray-600);
+        }
+
+        .policy-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .policy-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal for Images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-grid,
+            .transport-options,
+            .policy-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .info-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                🏨 <span>White River Inn</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#access">Access</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#policies">Policies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-<div id="id01" class="modal">
-  
-  <form name="myform" class="modal-content animate" onsubmit="myFunction(event)">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>White River Inn</h1>
+            <p class="subtitle">Your Home Away from Home in Tokyo</p>
+            <div class="hero-buttons">
+                <a href="#access" class="btn btn-primary">How to Get Here</a>
+                <a href="#amenities" class="btn btn-outline">Explore Amenities</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need</h2>
+                <p>Quick access to essential information for your stay</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="scrollToSection('access')">
+                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-content">
+                        <h3>Getting Here</h3>
+                        <p>Detailed directions from Haneda & Narita airports, plus local navigation</p>
+                    </div>
+                </div>
+                <div class="feature-card" onclick="scrollToSection('amenities')">
+                    <div class="feature-icon">🏠</div>
+                    <div class="feature-content">
+                        <h3>Room Access</h3>
+                        <p>Smart lock system, entry codes, and building navigation guide</p>
+                    </div>
+                </div>
+                <div class="feature-card" onclick="scrollToSection('wifi')">
+                    <div class="feature-icon">📶</div>
+                    <div class="feature-content">
+                        <h3>Stay Connected</h3>
+                        <p>WiFi passwords and network information for all floors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <label for="psw"><b>Password</b></label>
-      <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-      <label id="msg"><b>Wrong Username/Password</b></label>
-      <input type="radio" name="operation" value="1" checked><label style="font-size: 24px;">Access</label>
-      <input type="radio" name="operation" value="2"><label style="font-size: 24px;">Room Guide</label>
-<!--       <input type="radio" name="operation" value="3" disabled><label style="font-size: 24px;">Playroom</label>
-      <input type="radio" name="operation" value="4" disabled><label style="font-size: 24px;">Roof Terrace</label> -->
-      <input type="radio" name="operation" value="5" checked><label style="font-size: 24px;">Download PDF</label>
+    <!-- Location Section -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-content">
+                <h2>Prime Location in Koto</h2>
+                <p>Nestled in the heart of Tokyo's Koto district, White River Inn offers the perfect blend of traditional charm and modern convenience.</p>
+                <ul class="info-list">
+                    <li>📍 3-6-13 Shirakawa, Koto, Tokyo</li>
+                    <li>🚇 2 minutes from Kiyosumi-Shirakawa Station</li>
+                    <li>🚶 Easy access to Tokyo's major attractions</li>
+                    <li>🏪 Surrounded by local shops and restaurants</li>
+                </ul>
+            </div>
+            <div class="info-image">
+                <img src="contents/page_007/page_007.png" alt="Location Map" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Guide Section -->
+    <section class="access-guide" id="access">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Reach Us</h2>
+                <p>Multiple convenient routes from Tokyo's major airports</p>
+            </div>
+            <div class="transport-options">
+                <div class="transport-card" onclick="showTransportRoute('haneda')">
+                    <div class="transport-icon">✈️</div>
+                    <h3>From Haneda</h3>
+                    <p>45 minutes via Keikyu & Metro</p>
+                </div>
+                <div class="transport-card" onclick="showTransportRoute('narita')">
+                    <div class="transport-icon">🛬</div>
+                    <h3>From Narita</h3>
+                    <p>75 minutes via Skyliner & Metro</p>
+                </div>
+                <div class="transport-card" onclick="showTransportRoute('bus')">
+                    <div class="transport-icon">🚌</div>
+                    <h3>Airport Bus</h3>
+                    <p>Direct to T-CAT, then 1 station</p>
+                </div>
+                <div class="transport-card" onclick="showTransportRoute('taxi')">
+                    <div class="transport-icon">🚕</div>
+                    <h3>By Taxi</h3>
+                    <p>Show driver our address card</p>
+                </div>
+                <div class="transport-card" onclick="showTransportRoute('local')">
+                    <div class="transport-icon">🚶</div>
+                    <h3>Near the Building</h3>
+                    <p>Step-by-step walking guide</p>
+                </div>
+            </div>
+            
+            <!-- Detailed Route Maps -->
+            <div class="info-grid" style="margin-top: 3rem;">
+                <div class="info-image">
+                    <img src="contents/page_002/page_002.png" alt="Haneda Route" onclick="openModal(this)">
+                </div>
+                <div class="info-content">
+                    <h3>From Haneda Airport</h3>
+                    <p>Take the Keikyu Line to Shinbashi, transfer to Ginza Line, then Hanzomon Line to Kiyosumi-Shirakawa. Exit from B2.</p>
+                    <a href="#" class="btn btn-primary" onclick="showDetailedRoute('haneda')">View Step-by-Step</a>
+                </div>
+            </div>
+            
+            <div class="info-grid" style="margin-top: 3rem;">
+                <div class="info-content">
+                    <h3>From Narita Airport</h3>
+                    <p>Take the Keisei Skyliner to Nippori, transfer to Yamanote Line to Shinbashi, then follow the Haneda route.</p>
+                    <a href="#" class="btn btn-primary" onclick="showDetailedRoute('narita')">View Step-by-Step</a>
+                </div>
+                <div class="info-image">
+                    <img src="contents/page_003/page_003.png" alt="Narita Route" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <!-- Airport Bus Section -->
+            <div class="info-grid" style="margin-top: 3rem;" id="bus-section">
+                <div class="info-image">
+                    <img src="contents/page_004/page_004.png" alt="T-CAT Bus Terminal" onclick="openModal(this)">
+                </div>
+                <div class="info-content">
+                    <h3>Airport Bus via T-CAT</h3>
+                    <p>Take the airport limousine bus to Tokyo City Air Terminal (T-CAT), then it's just one station to our hotel.</p>
+                    <ul class="info-list">
+                        <li>🚌 Haneda → T-CAT: 30 minutes</li>
+                        <li>🚌 Narita → T-CAT: 55 minutes</li>
+                        <li>🚇 T-CAT (Suitengumae) → Kiyosumi-Shirakawa: 1 station (3 min)</li>
+                        <li>🚶 Walk from B2 exit: 2 minutes</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Bus Links:</strong></p>
+                        <p><a href="https://www.limousinebus.co.jp/en/areas/bus_stop/hnd/tcat/dep/10/" target="_blank" style="color: var(--secondary);">Haneda to T-CAT</a></p>
+                        <p><a href="https://www.limousinebus.co.jp/en/areas/bus_stop/nrt/tcat_tokyo/dep/10/" target="_blank" style="color: var(--secondary);">Narita to T-CAT</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taxi Section -->
+            <div class="info-grid" style="margin-top: 3rem;" id="taxi-section">
+                <div class="info-content">
+                    <h3>By Taxi</h3>
+                    <p>The most convenient option - show our address card to the driver for easy navigation.</p>
+                    <ul class="info-list">
+                        <li>🚕 From Haneda: ¥4,000-6,000 (30-45 min)</li>
+                        <li>🚕 From Narita: ¥16,000-20,000 (60-90 min)</li>
+                        <li>📍 Address: 3-6-13 Shirakawa, Koto, Tokyo</li>
+                        <li>🗾 Japanese: 東京都江東区白河３−６−１３</li>
+                    </ul>
+                    <div style="background: var(--secondary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">💳 Taxi Tips</h4>
+                        <p style="font-size: 0.9rem;">• Most taxis accept credit cards<br>
+                        • Show this address to the driver<br>
+                        • Keep our contact info handy<br>
+                        • Prices may vary with traffic</p>
+                    </div>
+                </div>
+                <div class="info-image">
+                    <img src="contents/page_007/page_007.png" alt="Hotel Location Map" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <!-- Local Area Guide Section -->
+            <div class="info-grid" style="margin-top: 3rem;" id="local-section">
+                <div class="info-image">
+                    <img src="contents/page_007/page_007.png" alt="Area Overview Map" onclick="openModal(this)">
+                </div>
+                <div class="info-content">
+                    <h3>🚶 Near the Building Guide</h3>
+                    <p>Already in the Kiyosumi-Shirakawa area? Here's your step-by-step walking guide to find us easily.</p>
+                    <ul class="info-list">
+                        <li>📍 Station: Kiyosumi-Shirakawa (B1 or B2 Exit)</li>
+                        <li>🚶 Walking time: 2 minutes from B2 exit</li>
+                        <li>🏢 Address: 3-6-13 Shirakawa, Koto, Tokyo</li>
+                        <li>🔍 Look for: FamilyMart nearby as landmark</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-grid" style="margin-top: 2rem;">
+                <div class="info-content">
+                    <h3>🗺️ Walking Route from B2 Exit</h3>
+                    <p>Follow the blue dotted path for the most direct route to our entrance.</p>
+                    <ol class="info-list">
+                        <li>Exit Kiyosumi-Shirakawa Station via B2 exit</li>
+                        <li>Head east along the main street</li>
+                        <li>Pass the FamilyMart on your right</li>
+                        <li>Our building entrance is just ahead</li>
+                        <li>Look for the private driveway entrance</li>
+                    </ol>
+                </div>
+                <div class="info-image">
+                    <img src="contents/page_008/page_008.png" alt="Walking Route Map" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <div class="info-grid" style="margin-top: 2rem;">
+                <div class="info-image">
+                    <img src="contents/page_009/page_009.png" alt="Building Entrance" onclick="openModal(this)">
+                </div>
+                <div class="info-content">
+                    <h3>🏢 Building Entrance & Floors</h3>
+                    <p>Once you arrive at the building, here's what you need to know:</p>
+                    <ul class="info-list">
+                        <li>🚗 Private driveway available for drop-offs</li>
+                        <li>🏠 1F: Building entrance and lobby</li>
+                        <li>🛏️ 2F/3F: White River Inn guest rooms</li>
+                        <li>🔐 Use your smart lock code for room access</li>
+                    </ul>
+                    <div style="background: var(--primary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">📱 Need Help?</h4>
+                        <p style="font-size: 0.9rem;">If you can't find us, call or text us for real-time assistance. We're here to help!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Building Access Section -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-image">
+                <img src="contents/page_011/page_011.png" alt="Smart Lock" onclick="openModal(this)">
+            </div>
+            <div class="info-content">
+                <h2>Easy Entry System</h2>
+                <p>Our modern smart lock system ensures secure and convenient access to your room.</p>
+                <ul class="info-list">
+                    <li>🔓 To unlock: Press *, enter code, press #</li>
+                    <li>🔒 To lock: Simply press #</li>
+                    <li>🚪 Main entrance: Code + *</li>
+                    <li>📱 24/7 support available</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hotel Amenities</h2>
+                <p>Everything you need for a comfortable stay</p>
+            </div>
+            <div class="amenities-showcase">
+                <div class="amenity-item">
+                    <img src="contents/page_013/page_013.png" alt="WiFi" onclick="openModal(this)">
+                    <div class="amenity-overlay">
+                        <h3>High-Speed WiFi</h3>
+                        <p>Free internet on all floors</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <img src="contents/page_012/page_012.png" alt="Air Conditioning" onclick="openModal(this)">
+                    <div class="amenity-overlay">
+                        <h3>Climate Control</h3>
+                        <p>Individual AC units</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <img src="contents/page_018/page_018.png" alt="Laundry" onclick="openModal(this)">
+                    <div class="amenity-overlay">
+                        <h3>Coin Laundry</h3>
+                        <p>24/7 laundry facilities</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <img src="contents/page_009/page_009.png" alt="Building" onclick="openModal(this)">
+                    <div class="amenity-overlay">
+                        <h3>Private Entrance</h3>
+                        <p>Secure building access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WiFi Section -->
+    <section class="info-section" id="wifi">
+        <div class="info-grid">
+            <div class="info-content">
+                <h2>Stay Connected</h2>
+                <p>Complimentary high-speed WiFi throughout the property</p>
+                <div style="background: var(--secondary); color: white; padding: 2rem; border-radius: 1rem; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Network Information</h3>
+                    <p><strong>Networks:</strong> WRI-102, WRI-201, WRI-202, WRI-301, WRI-302</p>
+                    <p><strong>Password:</strong> pa55word</p>
+                </div>
+            </div>
+            <div class="info-image">
+                <img src="contents/page_013/page_013.png" alt="WiFi Info" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section class="policies" id="policies">
+        <div class="container">
+            <div class="section-header">
+                <h2>House Guidelines</h2>
+                <p>Important information for a pleasant stay</p>
+            </div>
+            <div class="policy-cards">
+                <div class="policy-card warning">
+                    <h3><span class="policy-icon">🚭</span> No Smoking</h3>
+                    <ul>
+                        <li>Strictly prohibited indoors</li>
+                        <li>Designated outdoor area available</li>
+                        <li>Fire safety is our priority</li>
+                    </ul>
+                </div>
+                <div class="policy-card warning">
+                    <h3><span class="policy-icon">🚽</span> Toilet Usage</h3>
+                    <ul>
+                        <li>Only flush provided toilet paper</li>
+                        <li>No foreign objects</li>
+                        <li>Plumbing repairs are costly</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3><span class="policy-icon">♻️</span> Waste Disposal</h3>
+                    <ul>
+                        <li>Separate combustibles/incombustibles</li>
+                        <li>Collection: Tuesday & Friday nights</li>
+                        <li>Use designated disposal area</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3><span class="policy-icon">🔒</span> Security</h3>
+                    <ul>
+                        <li>Lock doors when leaving</li>
+                        <li>Don't share access codes</li>
+                        <li>Report issues immediately</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Need Assistance?</h2>
+            <p>We're here to help make your stay comfortable</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>3-6-13 Shirakawa, Koto, Tokyo</span>
+                </div>
+                <div class="contact-item">
+                    <span>🚇</span>
+                    <span>Kiyosumi-Shirakawa Station (B2 Exit)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 White River Inn. All rights reserved.</p>
+        <p>Your comfort is our priority</p>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
-  </form>
-</div>
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-var msg = document.getElementById('msg');
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
 
-// When the user clicks anywhere outside of the modal, close it
-window.onload = function(event) {
-    modal.style.display = "block";
-    // msg.style.display = "none";
-}
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
 
-function myFunction(e) {
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
 
-    // alert(document.getElementById('uname').value);
-    // alert(document.getElementById('psw').value);
+        // Modal functionality
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.add('active');
+            modalImg.src = img.src;
+        }
 
-  if (document.getElementById('uname').value === 'wri' && document.getElementById('psw').value == 'whiteriver') {
-    if (document.myform.operation[0].checked == true) {
-      document.myform.action ="01_guide_access_en_2024/index.html";
-    } else if (document.myform.operation[1].checked == true) {
-      document.myform.action ="01_guide_amenities_en_2024/index.html";
-    // } else if (document.myform.operation[2].checked == true) {
-    //   document.myform.action ="01_guide_playroom_en_2024/index.html";
-    // } else if (document.myform.operation[3].checked == true) {
-    //   document.myform.action ="01_guide_roof_en_2024/index.html";
-    } else if (document.myform.operation[2].checked == true) {
-      document.myform.action ="01_guide_en_2024.pdf";
-    }
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
 
-    return true;
+        // Close modal on click outside
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
-  } else {
-    msg.style.display = "block";
-    e.preventDefault();
-    return false;
-  }
+        // Show transport route function
+        function showTransportRoute(type) {
+            let targetElement;
+            
+            switch(type) {
+                case 'haneda':
+                    // Scroll to the Haneda section
+                    targetElement = document.querySelector('.info-grid'); // First info-grid is Haneda
+                    break;
+                case 'narita':
+                    // Scroll to the Narita section  
+                    targetElement = document.querySelectorAll('.info-grid')[1]; // Second info-grid is Narita
+                    break;
+                case 'bus':
+                    // Scroll to the Bus section
+                    targetElement = document.getElementById('bus-section');
+                    break;
+                case 'taxi':
+                    // Scroll to the Taxi section
+                    targetElement = document.getElementById('taxi-section');
+                    break;
+                case 'local':
+                    // Scroll to the Local Area Guide section
+                    targetElement = document.getElementById('local-section');
+                    break;
+            }
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Add a highlight effect
+                targetElement.style.transform = 'scale(1.02)';
+                targetElement.style.transition = 'transform 0.3s ease-out';
+                setTimeout(() => {
+                    targetElement.style.transform = 'scale(1)';
+                }, 1000);
+            }
+        }
 
-}
-</script>
+        // Show detailed route function
+        function showDetailedRoute(airport) {
+            // This would show detailed step-by-step instructions
+            const details = {
+                haneda: `Detailed Haneda Route:
+1. Take Keikyu Line to Shinbashi Station (13 min)
+2. Transfer to JR Yamanote Line 
+3. Go to Shimbashi Station (2 min)
+4. Transfer to Tokyo Metro Ginza Line
+5. Take Ginza Line to Omotesando Station (9 min)
+6. Transfer to Hanzomon Line
+7. Take Hanzomon Line to Kiyosumi-Shirakawa Station (8 min)
+8. Exit from B2 and walk 2 minutes to White River Inn
 
+Total time: ~45 minutes`,
+                narita: `Detailed Narita Route:
+1. Take Keisei Skyliner to Nippori Station (41 min)
+2. Transfer to JR Yamanote Line
+3. Go to Shinbashi Station (12 min)
+4. Transfer to Tokyo Metro Ginza Line
+5. Take Ginza Line to Omotesando Station (9 min)
+6. Transfer to Hanzomon Line
+7. Take Hanzomon Line to Kiyosumi-Shirakawa Station (8 min)
+8. Exit from B2 and walk 2 minutes to White River Inn
+
+Total time: ~75 minutes`
+            };
+            
+            alert(details[airport] || `Detailed ${airport} route instructions would be shown here`);
+        }
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and info sections
+        document.querySelectorAll('.feature-card, .info-grid, .transport-card, .policy-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
