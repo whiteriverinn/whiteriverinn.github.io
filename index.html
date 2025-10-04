@@ -145,6 +145,47 @@
             background-attachment: fixed;
             overflow: hidden;
         }
+        
+        /* Mobile-specific hero improvements */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll; /* Fixed backgrounds don't work well on iOS */
+                background-position: center bottom; /* Show building better on mobile */
+                background-size: cover;
+                min-height: 100vh; /* Full viewport height on mobile */
+            }
+            
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0.2) 0%, 
+                    rgba(0,0,0,0.1) 50%, 
+                    rgba(0,0,0,0.4) 100%);
+                pointer-events: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                background-position: 70% center; /* Adjust to show building entrance on small screens */
+                background-size: 140%; /* Slightly zoom to show building detail */
+                background-position-y: 65%; /* Show more of the building facade */
+            }
+            
+            /* Reduce blur overlay on very small screens */
+            .hero::after {
+                background: linear-gradient(to bottom, 
+                    transparent 0%, 
+                    rgba(0,0,0,0.1) 40%, 
+                    rgba(0,0,0,0.5) 90%,
+                    rgba(0,0,0,0.6) 100%);
+            }
+        }
 
         .hero::before {
             content: '';
@@ -164,6 +205,29 @@
             padding: 2rem;
             max-width: 800px;
             animation: fadeInUp 1s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1.5rem;
+                margin-bottom: 20%; /* Push content up to show more building */
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem !important;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            }
+            
+            .hero-content p {
+                font-size: 1rem !important;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-content .tagline {
+                font-size: 0.9rem !important;
+            }
         }
 
         @keyframes fadeInUp {
@@ -822,6 +886,25 @@
         </div>
     </section>
 
+    <!-- Location Section -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-content">
+                <h2>Prime Location in Koto</h2>
+                <p>Nestled in the heart of Tokyo's Koto district, White River Inn offers the perfect blend of traditional charm and modern convenience.</p>
+                <ul class="info-list">
+                    <li>📍 3-6-13 Shirakawa, Koto, Tokyo</li>
+                    <li>🚇 2 minutes from Kiyosumi-Shirakawa Station</li>
+                    <li>🚶 Easy access to Tokyo's major attractions</li>
+                    <li>🏪 Surrounded by local shops and restaurants</li>
+                </ul>
+            </div>
+            <div class="info-image">
+                <img src="contents/page_007/page_007_img_002.png" alt="Location Map" data-full-size="contents/page_007/page_007.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+            </div>
+        </div>
+    </section>
+
     <!-- Quick Access Section -->
     <section class="quick-access">
         <div class="container">
@@ -855,25 +938,6 @@
         </div>
     </section>
 
-    <!-- Location Section -->
-    <section class="info-section">
-        <div class="info-grid">
-            <div class="info-content">
-                <h2>Prime Location in Koto</h2>
-                <p>Nestled in the heart of Tokyo's Koto district, White River Inn offers the perfect blend of traditional charm and modern convenience.</p>
-                <ul class="info-list">
-                    <li>📍 3-6-13 Shirakawa, Koto, Tokyo</li>
-                    <li>🚇 2 minutes from Kiyosumi-Shirakawa Station</li>
-                    <li>🚶 Easy access to Tokyo's major attractions</li>
-                    <li>🏪 Surrounded by local shops and restaurants</li>
-                </ul>
-            </div>
-            <div class="info-image">
-                <img src="contents/page_007/page_007_img_002.png" alt="Location Map" data-full-size="contents/page_007/page_007.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-            </div>
-        </div>
-    </section>
-
     <!-- Access Guide Section -->
     <section class="access-guide" id="access">
         <div class="container">
@@ -892,10 +956,10 @@
                     <h3>From Narita</h3>
                     <p>75 minutes via Skyliner & Metro</p>
                 </div>
-                <div class="transport-card" onclick="showTransportRoute('bus')">
-                    <div class="transport-icon">🚌</div>
-                    <h3>Airport Bus</h3>
-                    <p>Direct to T-CAT, then 1 station</p>
+                <div class="transport-card" onclick="showTransportRoute('tokyo')">
+                    <div class="transport-icon">🚉</div>
+                    <h3>From Tokyo Station</h3>
+                    <p>15 minutes via Marunouchi Line</p>
                 </div>
                 <div class="transport-card" onclick="showTransportRoute('taxi')">
                     <div class="transport-icon">🚕</div>
@@ -910,7 +974,7 @@
             </div>
             
             <!-- Detailed Route Maps -->
-            <div class="info-grid" style="margin-top: 3rem;">
+            <div class="info-grid" style="margin-top: 3rem;" id="haneda-section">
                 <div class="info-image">
                     <img src="contents/page_002/page_002_img_002.png" alt="Haneda Route" data-full-size="contents/page_002/page_002.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
@@ -921,7 +985,7 @@
                 </div>
             </div>
             
-            <div class="info-grid" style="margin-top: 3rem;">
+            <div class="info-grid" style="margin-top: 3rem;" id="narita-section">
                 <div class="info-content">
                     <h3>From Narita Airport</h3>
                     <p>Take the Keisei Skyliner to Nippori, transfer to Yamanote Line to Shinbashi, then follow the Haneda route.</p>
@@ -932,24 +996,26 @@
                 </div>
             </div>
 
-            <!-- Airport Bus Section -->
-            <div class="info-grid" style="margin-top: 3rem;" id="bus-section">
+            <!-- Tokyo Station Section -->
+            <div class="info-grid" style="margin-top: 3rem;" id="tokyo-section">
                 <div class="info-image">
-                    <img src="contents/page_004/page_004_img_002.png" alt="T-CAT Bus Terminal" data-full-size="contents/page_004/page_004.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                    <img src="contents/page_004/page_004_img_002.png" alt="From Tokyo Station" data-full-size="contents/page_004/page_004.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
-                    <h3>Airport Bus via T-CAT</h3>
-                    <p>Take the airport limousine bus to Tokyo City Air Terminal (T-CAT), then it's just one station to our hotel.</p>
+                    <h3>From Tokyo Station</h3>
+                    <p>A quick journey from Tokyo's central hub to our hotel via the efficient Tokyo Metro system.</p>
                     <ul class="info-list">
-                        <li>🚌 Haneda → T-CAT: 30 minutes</li>
-                        <li>🚌 Narita → T-CAT: 55 minutes</li>
-                        <li>🚇 T-CAT (Suitengumae) → Kiyosumi-Shirakawa: 1 station (3 min)</li>
-                        <li>🚶 Walk from B2 exit: 2 minutes</li>
+                        <li>🚉 Take Marunouchi Line to Otemachi Station</li>
+                        <li>🔄 Transfer to Hanzomon Line</li>
+                        <li>🚇 Take Hanzomon Line to Kiyosumi-Shirakawa</li>
+                        <li>⏱️ Total journey: 15-20 minutes</li>
+                        <li>🚶 Exit from B2 and walk 2 minutes</li>
                     </ul>
-                    <div style="margin-top: 1rem;">
-                        <p><strong>Bus Links:</strong></p>
-                        <p><a href="https://www.limousinebus.co.jp/en/areas/bus_stop/hnd/tcat/dep/10/" target="_blank" style="color: var(--secondary);">Haneda to T-CAT</a></p>
-                        <p><a href="https://www.limousinebus.co.jp/en/areas/bus_stop/nrt/tcat_tokyo/dep/10/" target="_blank" style="color: var(--secondary);">Narita to T-CAT</a></p>
+                    <div style="background: var(--secondary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🎫 Ticket Tips</h4>
+                        <p style="font-size: 0.9rem;">• IC cards (Suica/Pasmo) accepted<br>
+                        • Cost: Around ¥200<br>
+                        • Platform signs in English available</p>
                     </div>
                 </div>
             </div>
@@ -957,23 +1023,24 @@
             <!-- Taxi Section -->
             <div class="info-grid" style="margin-top: 3rem;" id="taxi-section">
                 <div class="info-image">
-                    <img src="contents/page_009/page_009_img_003.png" alt="Building Entrance for Taxi" data-full-size="contents/page_009/page_009.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                    <img src="contents/page_008/page_008_img_002.png" alt="Taxi Drop-off Location" data-full-size="contents/page_008/page_008.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
                 <div class="info-content">
                     <h3>By Taxi</h3>
-                    <p>The most convenient option - show our address card to the driver for easy navigation.</p>
+                    <p>The most convenient option - show this specific address to the driver for the correct drop-off point.</p>
                     <ul class="info-list">
                         <li>🚕 From Haneda: ¥4,000-6,000 (30-45 min)</li>
                         <li>🚕 From Narita: ¥16,000-20,000 (60-90 min)</li>
-                        <li>📍 Address: 3-6-13 Shirakawa, Koto, Tokyo</li>
-                        <li>🗾 Japanese: 東京都江東区白河３−６−１３</li>
+                        <li>📍 <strong>Tell driver: 3-6-6 Shirakawa, Koto, Tokyo</strong></li>
+                        <li>🗾 Japanese: 東京都江東区白河３−６−６</li>
+                        <li>⚠️ Note: Use 3-6-6 (not 3-6-13) to avoid narrow streets</li>
                     </ul>
                     <div style="background: var(--secondary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
                         <h4 style="margin-bottom: 0.5rem;">💳 Taxi Tips</h4>
                         <p style="font-size: 0.9rem;">• Most taxis accept credit cards<br>
-                        • Show this address to the driver<br>
-                        • Keep our contact info handy<br>
-                        • Prices may vary with traffic</p>
+                        • Show "3-6-6 Shirakawa" to the driver<br>
+                        • This brings you to the main road entrance<br>
+                        • Walk 1 minute to our building at 3-6-13</p>
                     </div>
                 </div>
             </div>
@@ -1308,15 +1375,19 @@
             switch(type) {
                 case 'haneda':
                     // Scroll to the Haneda section
-                    targetElement = document.querySelector('.info-grid'); // First info-grid is Haneda
+                    targetElement = document.getElementById('haneda-section');
                     break;
                 case 'narita':
                     // Scroll to the Narita section  
-                    targetElement = document.querySelectorAll('.info-grid')[1]; // Second info-grid is Narita
+                    targetElement = document.getElementById('narita-section');
+                    break;
+                case 'tokyo':
+                    // Scroll to the Tokyo Station section
+                    targetElement = document.getElementById('tokyo-section');
                     break;
                 case 'bus':
-                    // Scroll to the Bus section
-                    targetElement = document.getElementById('bus-section');
+                    // Backward compatibility - redirect to tokyo section
+                    targetElement = document.getElementById('tokyo-section');
                     break;
                 case 'taxi':
                     // Scroll to the Taxi section
