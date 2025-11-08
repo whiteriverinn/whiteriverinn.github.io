@@ -406,6 +406,15 @@
             margin: 0 auto;
         }
 
+        /* Reverse order for zigzag pattern on desktop */
+        .info-grid.reverse-desktop .info-content {
+            order: 2;
+        }
+
+        .info-grid.reverse-desktop .info-image {
+            order: 1;
+        }
+
         .info-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
@@ -716,6 +725,12 @@
                 gap: 2rem;
             }
 
+            /* Reset order on mobile for consistent content-first layout */
+            .info-grid.reverse-desktop .info-content,
+            .info-grid.reverse-desktop .info-image {
+                order: 0;
+            }
+
             .feature-grid,
             .transport-options,
             .policy-cards {
@@ -886,6 +901,9 @@
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
+
     <!-- Location Section -->
     <section class="info-section">
         <div class="info-grid">
@@ -904,6 +922,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
 
     <!-- Quick Access Section -->
     <section class="quick-access">
@@ -974,14 +995,14 @@
             </div>
             
             <!-- Detailed Route Maps -->
-            <div class="info-grid" style="margin-top: 3rem;" id="haneda-section">
-                <div class="info-image">
-                    <img src="contents/page_002/page_002_img_002.png" alt="Haneda Route" data-full-size="contents/page_002/page_002.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
+            <div class="info-grid reverse-desktop" style="margin-top: 3rem;" id="haneda-section">
                 <div class="info-content">
                     <h3>From Haneda Airport</h3>
                     <p>Take the Keikyu Line to Shinbashi, transfer to Ginza Line, then Hanzomon Line to Kiyosumi-Shirakawa. Exit from B2.</p>
                     <a href="#" class="btn btn-primary" onclick="showDetailedRoute('haneda')">View Step-by-Step</a>
+                </div>
+                <div class="info-image">
+                    <img src="contents/page_002/page_002_img_002.png" alt="Haneda Route" data-full-size="contents/page_002/page_002.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
             
@@ -997,10 +1018,7 @@
             </div>
 
             <!-- Tokyo Station Section -->
-            <div class="info-grid" style="margin-top: 3rem;" id="tokyo-section">
-                <div class="info-image">
-                    <img src="contents/page_004/page_004_img_002.png" alt="From Tokyo Station" data-full-size="contents/page_004/page_004.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
+            <div class="info-grid reverse-desktop" style="margin-top: 3rem;" id="tokyo-section">
                 <div class="info-content">
                     <h3>From Tokyo Station</h3>
                     <p>A quick journey from Tokyo's central hub to our hotel via the efficient Tokyo Metro system.</p>
@@ -1018,13 +1036,13 @@
                         • Platform signs in English available</p>
                     </div>
                 </div>
+                <div class="info-image">
+                    <img src="contents/page_004/page_004_img_002.png" alt="From Tokyo Station" data-full-size="contents/page_004/page_004.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                </div>
             </div>
 
             <!-- Taxi Section -->
-            <div class="info-grid" style="margin-top: 3rem;" id="taxi-section">
-                <div class="info-image">
-                    <img src="contents/images/taxi.png" alt="Taxi Drop-off Location" data-full-size="contents/images/taxi.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
+            <div class="info-grid reverse-desktop" style="margin-top: 3rem;" id="taxi-section">
                 <div class="info-content">
                     <h3>By Taxi</h3>
                     <p>The most convenient option - show this specific address to the driver for the correct drop-off point.</p>
@@ -1042,6 +1060,9 @@
                         • This brings you to the main road entrance<br>
                         • Walk 1 minute to our building at 3-6-13</p>
                     </div>
+                </div>
+                <div class="info-image">
+                    <img src="contents/images/taxi.png" alt="Taxi Drop-off Location" data-full-size="contents/images/taxi.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
 
@@ -1062,8 +1083,79 @@
                 </div>
             </div>
 
+            <!-- Section Separator -->
+            <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
+            <!-- Main Street Access -->
+            <div class="info-grid reverse-desktop" style="margin-top: 3rem;" id="local-section">
+                <div class="info-content">
+                    <h3>🛣️ Access from Main Street</h3>
+                    <p>The recommended route for first-time visitors and those with luggage.</p>
+                    <ul class="info-list">
+                        <li>1️⃣ Locate the walkway entrance from the main street</li>
+                        <li>2️⃣ Enter the walk path as shown in the image</li>
+                        <li>3️⃣ Make a turn at the halfway point (see arrow)</li>
+                        <li>4️⃣ Continue to the white building entrance</li>
+                        <li>✅ Wider path, easier with suitcases</li>
+                    </ul>
+                </div>
+                <div class="info-image">
+                    <img src="contents/images/mainstreet.jpg" alt="Main Street Entrance" data-full-size="contents/images/mainstreet.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Section Separator -->
+            <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
+            <!-- Walkway Guide -->
+            <div class="info-grid" style="margin-top: 2rem;">
+                <div class="info-content">
+                    <h3>🚶 The Private Walkway</h3>
+                    <p>This private walkway connects both streets and leads to our building entrance.</p>
+                    <ul class="info-list">
+                        <li>🔄 Makes a turn at the halfway point</li>
+                        <li>🏘️ Shared with neighboring properties</li>
+                        <li>🌙 Well-lit at night for safety</li>
+                        <li>🚪 White building entrance at the end</li>
+                        <li>⚠️ Please be considerate of neighbors</li>
+                    </ul>
+                    <div style="background: var(--light); padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">🤫 Quiet Hours</h4>
+                        <p style="font-size: 0.9rem;">The walkway is a shared space. Please keep noise to a minimum, especially during evening and early morning hours.</p>
+                    </div>
+                </div>
+                <div class="info-image">
+                    <img src="contents/images/walkpath.jpg" alt="Private Walkway" data-full-size="contents/images/walkpath.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Section Separator -->
+            <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
+            <!-- Small Street Access -->
+            <div class="info-grid reverse-desktop" style="margin-top: 2rem;">
+                <div class="info-content">
+                    <h3>🏘️ Access from Small Street</h3>
+                    <p>A shorter route from the station, preferred by returning guests.</p>
+                    <ul class="info-list">
+                        <li>1️⃣ Find the walkway entrance on the small street</li>
+                        <li>2️⃣ Look for the yellow/black barricade as a landmark</li>
+                        <li>3️⃣ Enter the walk path as shown in the image</li>
+                        <li>4️⃣ Make a turn at the halfway point</li>
+                        <li>5️⃣ Continue to the white building entrance</li>
+                        <li>✅ More direct route from station</li>
+                    </ul>
+                </div>
+                <div class="info-image">
+                    <img src="contents/images/smallstreet.jpg" alt="Small Street Entrance" data-full-size="contents/images/smallstreet.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Section Separator -->
+            <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
             <!-- Building Access Routes Section -->
-            <div class="info-grid" style="margin-top: 3rem;" id="local-section">
+            <div class="info-grid" style="margin-top: 2rem;">
                 <div class="info-content">
                     <h3>🚶 Near the Building Guide</h3>
                     <p>The building can be accessed from both the main street and the small street via our private walkway.</p>
@@ -1083,96 +1175,15 @@
                     <img src="contents/images/exterior.jpg" alt="White River Inn Building" data-full-size="contents/images/exterior.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
                 </div>
             </div>
-
-            <!-- Main Street Access -->
-            <div class="info-grid" style="margin-top: 2rem;">
-                <div class="info-image">
-                    <img src="contents/images/mainstreet.jpg" alt="Main Street Entrance" data-full-size="contents/images/mainstreet.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
-                <div class="info-content">
-                    <h3>🛣️ Access from Main Street</h3>
-                    <p>The recommended route for first-time visitors and those with luggage.</p>
-                    <ul class="info-list">
-                        <li>1️⃣ Locate the walkway entrance from the main street</li>
-                        <li>2️⃣ Enter the walk path as shown in the image</li>
-                        <li>3️⃣ Make a turn at the halfway point (see arrow)</li>
-                        <li>4️⃣ Continue to the white building entrance</li>
-                        <li>✅ Wider path, easier with suitcases</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Small Street Access -->
-            <div class="info-grid" style="margin-top: 2rem;">
-                <div class="info-content">
-                    <h3>🏘️ Access from Small Street</h3>
-                    <p>A shorter route from the station, preferred by returning guests.</p>
-                    <ul class="info-list">
-                        <li>1️⃣ Find the walkway entrance on the small street</li>
-                        <li>2️⃣ Look for the yellow/black barricade as a landmark</li>
-                        <li>3️⃣ Enter the walk path as shown in the image</li>
-                        <li>4️⃣ Make a turn at the halfway point</li>
-                        <li>5️⃣ Continue to the white building entrance</li>
-                        <li>✅ More direct route from station</li>
-                    </ul>
-                </div>
-                <div class="info-image">
-                    <img src="contents/images/smallstreet.jpg" alt="Small Street Entrance" data-full-size="contents/images/smallstreet.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
-            </div>
-
-            <!-- Walkway Guide -->
-            <div class="info-grid" style="margin-top: 2rem;">
-                <div class="info-image">
-                    <img src="contents/images/walkpath.jpg" alt="Private Walkway" data-full-size="contents/images/walkpath.jpg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
-                <div class="info-content">
-                    <h3>🚶 The Private Walkway</h3>
-                    <p>This private walkway connects both streets and leads to our building entrance.</p>
-                    <ul class="info-list">
-                        <li>🔄 Makes a turn at the halfway point</li>
-                        <li>🏘️ Shared with neighboring properties</li>
-                        <li>🌙 Well-lit at night for safety</li>
-                        <li>🚪 White building entrance at the end</li>
-                        <li>⚠️ Please be considerate of neighbors</li>
-                    </ul>
-                    <div style="background: var(--light); padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">🤫 Quiet Hours</h4>
-                        <p style="font-size: 0.9rem;">The walkway is a shared space. Please keep noise to a minimum, especially during evening and early morning hours.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-grid" style="margin-top: 2rem;">
-                <div class="info-image">
-                    <img src="contents/page_010/page_010_img_002.jpeg" alt="Building Entrance" data-full-size="contents/page_010/page_010.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-                </div>
-                <div class="info-content">
-                    <h3>🏢 Building Entrance & Floors</h3>
-                    <p>Once you arrive at the building, here's what you need to know:</p>
-                    <ul class="info-list">
-                        <li>🚗 Private driveway available for drop-offs</li>
-                        <li>🏠 1F: Building entrance and lobby</li>
-                        <li>🛏️ 2F/3F: White River Inn guest rooms</li>
-                    </ul>
-                    <div style="background: var(--light); padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
-                        <h4 style="margin-bottom: 0.5rem;">🔓 Building Entry Code</h4>
-                        <p style="font-size: 0.9rem;">To enter the building:<br>
-                        1. Enter your access code<br>
-                        2. Press * (star key)<br>
-                        3. Door will unlock automatically</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
+
     <!-- Room Door Access Section -->
     <section class="info-section">
-        <div class="info-grid">
-            <div class="info-image">
-                <img src="contents/page_011/page_011_img_002.png" alt="Room Smart Lock" data-full-size="contents/page_011/page_011.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
-            </div>
+        <div class="info-grid reverse-desktop">
             <div class="info-content">
                 <h2>Easy Entry System</h2>
                 <p>Access your individual room with our smart lock system.</p>
@@ -1187,8 +1198,39 @@
                     <strong>Quick Reference:</strong> * → Code → # to unlock | # to lock
                 </div>
             </div>
+            <div class="info-image">
+                <img src="contents/page_011/page_011_img_002.png" alt="Room Smart Lock" data-full-size="contents/page_011/page_011.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+            </div>
+
+            <!-- Section Separator -->
+            <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
+
+            <div class="info-content">
+                <h3>🏢 Building Entrance & Floors</h3>
+                <p>Once you arrive at the building, here's what you need to know:</p>
+                <ul class="info-list">
+                    <li>🚗 Private driveway available for drop-offs</li>
+                    <li>🏠 1F: Building entrance and lobby</li>
+                    <li>🛏️ 2F/3F: White River Inn guest rooms</li>
+                </ul>
+                <div style="background: var(--light); padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem;">🔓 Building Entry Code</h4>
+                    <p style="font-size: 0.9rem;">To enter the building:<br>
+                    1. Enter your access code<br>
+                    2. Press * (star key)<br>
+                    3. Door will unlock automatically</p>
+                </div>
+            </div>
+            <div class="info-image">
+                <img src="contents/page_010/page_010_img_002.jpeg" alt="Building Entrance" data-full-size="contents/page_010/page_010.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+            </div>
+
         </div>
     </section>
+
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
 
     <!-- Amenities Section -->
     <section class="amenities" id="amenities">
@@ -1230,6 +1272,9 @@
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
     <!-- WiFi Section -->
     <section class="info-section" id="wifi">
         <div class="info-grid">
@@ -1248,6 +1293,9 @@
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
     <!-- Policies Section -->
     <section class="policies" id="policies">
         <div class="container">
@@ -1259,9 +1307,12 @@
                 <div class="policy-card warning">
                     <h3><span class="policy-icon">🚭</span> No Smoking</h3>
                     <ul>
-                        <li>Strictly prohibited indoors</li>
-                        <li>Designated outdoor area available</li>
-                        <li>Fire safety is our priority</li>
+                        <li>🏢 Strictly prohibited in the entire building</li>
+                        <li>🔝 Rooftop is also a no-smoking area</li>
+                        <li>🏙️ Street smoking is prohibited in this city</li>
+                        <li>📍 Use only designated smoking areas</li>
+                        <li>⚠️ Violations may result in fines</li>
+                        <li>🔥 Fire safety is our priority</li>
                     </ul>
                 </div>
                 <div class="policy-card warning">
@@ -1292,6 +1343,58 @@
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
+    <!-- No Smoking Details Section -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-content">
+                <h2>🚭 No Smoking Policy</h2>
+                <p>Please be aware of our strict no-smoking policy and local regulations.</p>
+                <ul class="info-list">
+                    <li>🏢 Entire building is smoke-free (all floors)</li>
+                    <li>🔝 Rooftop area is also strictly no-smoking</li>
+                    <li>🏙️ Tokyo law prohibits smoking on streets in this area</li>
+                    <li>💰 Street smoking violations can result in fines</li>
+                    <li>⚠️ Building violations may affect your stay</li>
+                </ul>
+                <div style="background: #fee; border-left: 4px solid #c33; padding: 1.5rem; border-radius: 0.5rem; margin-top: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem; color: #c33;">⛔ Important Warning</h4>
+                    <p style="font-size: 0.9rem; color: #900;">Smoking is NOT allowed anywhere in the building including rooms, hallways, stairwells, and rooftop. Please respect this policy to ensure everyone's comfort and safety.</p>
+                </div>
+            </div>
+            <div class="info-image">
+                <img src="contents/images/no_smoking_red_sign.jpeg" alt="No Smoking Sign" data-full-size="contents/images/no_smoking_red_sign.jpeg" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Designated Smoking Area -->
+        <div class="info-grid reverse-desktop" style="margin-top: 2rem;">
+            <div class="info-content">
+                <h3>📍 Designated Smoking Area Nearby</h3>
+                <p>For guests who smoke, there is a designated public smoking area just 2 minutes away.</p>
+                <ul class="info-list">
+                    <li>🚶 2-minute walk (140 meters) from the building</li>
+                    <li>🏪 Located near the 7-Eleven on Kiyosumi-Shirakawa</li>
+                    <li>🗺️ Follow the blue route shown on the map</li>
+                    <li>✅ Legal and designated smoking zone</li>
+                    <li>🌙 Accessible 24/7</li>
+                </ul>
+                <div style="background: var(--light); padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem;">💡 Smoking Tip</h4>
+                    <p style="font-size: 0.9rem;">Please use only designated smoking areas marked by signs. This helps you avoid fines and respects local community standards.</p>
+                </div>
+            </div>
+            <div class="info-image">
+                <img src="contents/images/route_to_smoking_spot.png" alt="Route to Designated Smoking Area" data-full-size="contents/images/route_to_smoking_spot.png" onclick="openModal(this)" class="thumbnail-image" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Primary Section Separator -->
+    <div style="border-top: 2px solid var(--gray-200); margin: 3rem auto; max-width: 1200px;"></div>
+
     <!-- Waste Disposal Details Section -->
     <section class="info-section">
         <div class="info-grid">
@@ -1316,6 +1419,9 @@
         </div>
     </section>
 
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -1333,6 +1439,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Primary Section Separator -->
+    <div style="border-top: 4px solid var(--primary); margin: 0; opacity: 0.3;"></div>
 
     <!-- Footer -->
     <footer>
